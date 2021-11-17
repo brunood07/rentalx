@@ -11,7 +11,7 @@ class CarImage {
     car_id: string;
 
     @Column()
-    image_name: string;
+    imagine_name: string;
 
     @CreateDateColumn()
     created_at: Date;
