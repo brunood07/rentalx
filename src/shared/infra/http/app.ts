@@ -14,12 +14,12 @@ import upload from "@config/upload";
 
 import swaggerFile from "../../../swagger.json";
 import { router } from "./routes";
-// import rateLimiter from "@shared/infra/http/middlewares/rateLimiter"
+import rateLimiter from "@shared/infra/http/middlewares/rateLimiter"
 
 createConnection();
 const app = express();
 
-// app.use(rateLimiter);
+app.use(rateLimiter);
 
 Sentry.init({
     dsn: process.env.SENTRY_DSN,
