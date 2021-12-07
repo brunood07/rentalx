@@ -30,7 +30,7 @@ describe("Create a rental", () => {
             fine_amount: 40,
             category_id: "1234",
             brand: "brand"
-        })
+        });
 
         const rental = await createRentalUseCase.execute({
             user_id: "12345",
@@ -43,7 +43,7 @@ describe("Create a rental", () => {
     });
 
     it("Should not be able to create a new rental if there is another open to the same user", async () => {
-        
+
         await rentalsRepositoryInMemory.create({
             car_id: "1111",
             expected_return_date: dayAdd24Hours,
@@ -85,4 +85,4 @@ describe("Create a rental", () => {
             })
         ).rejects.toEqual(new AppError("Invalid return time"));
     });
-})
+});

@@ -9,7 +9,7 @@ class Rental {
     id: string;
 
     @ManyToOne(() => Car)
-    @JoinColumn({name: "car_id"})
+    @JoinColumn({ name: "car_id" })
     car: Car;
 
     @Column()
@@ -37,7 +37,7 @@ class Rental {
     updated_at: Date;
 
     constructor() {
-        if(!this.id) {
+        if (!this.id) {
             this.id = uuidV4();
         }
     }

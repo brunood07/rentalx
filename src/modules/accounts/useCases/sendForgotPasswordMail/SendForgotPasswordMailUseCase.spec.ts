@@ -12,7 +12,6 @@ let usersTokensRepositoryInMemory: UsersTokensRepositoryInMemory;
 let mailProvider: MailProviderInMemory;
 
 describe("Send forgot mail", () => {
-    
     beforeEach(() => {
         usersRepositoryInMemory = new UsersRepositoryInMemory();
         dateProvider = new DayjsDateProvider();
@@ -25,7 +24,7 @@ describe("Send forgot mail", () => {
             dateProvider,
             mailProvider
         );
-    })
+    });
 
     it("Should be able to send a forgot password mail to user", async () => {
         const sendMail = jest.spyOn(mailProvider, "sendMail");
@@ -46,7 +45,7 @@ describe("Send forgot mail", () => {
         await expect(
             sendForgotPasswordMailUseCase.execute("test2@test.com.br")
         ).rejects.toEqual(new AppError("User doesnt exists!"));
-    })
+    });
 
     it("Should be able to create an users token", async () => {
         const generateTokenMail = jest.spyOn(usersTokensRepositoryInMemory, "create");
@@ -58,8 +57,8 @@ describe("Send forgot mail", () => {
             password: "1234",
         });
 
-        await sendForgotPasswordMailUseCase.execute("test@test.com.br")
+        await sendForgotPasswordMailUseCase.execute("test@test.com.br");
 
         expect(generateTokenMail).toBeCalled();
-    })
+    });
 })

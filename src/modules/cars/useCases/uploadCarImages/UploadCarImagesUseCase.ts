@@ -9,14 +9,13 @@ interface IRequest {
 
 @injectable()
 class UploadCarImagesUseCase {
-    
     constructor(
         @inject("CarsImagesRepository")
         private carsImagesRepository: CarsImagesRepository,
 
         @inject("StorageProvider")
         private storageProvider: IStorageProvider
-    ) {}
+    ) { }
 
     async execute({ car_id, images_name }: IRequest): Promise<void> {
 

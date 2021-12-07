@@ -2,8 +2,6 @@ import { ICreateUserTokenDTO } from "@modules/accounts/dtos/ICreateUserTokenDTO"
 import { UserTokens } from "@modules/accounts/infra/typeorm/entities/UserTokens";
 import { IUsersTokensRepository } from "../IUsersTokensRepository";
 
-
-
 class UsersTokensRepositoryInMemory implements IUsersTokensRepository {
     usersTokens: UserTokens[] = [];
 
@@ -39,7 +37,6 @@ class UsersTokensRepositoryInMemory implements IUsersTokensRepository {
 
         return userToken;
     }
-
 }
 
 export { UsersTokensRepositoryInMemory };

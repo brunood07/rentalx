@@ -8,7 +8,6 @@ let carsRepositoryInMemory: CarsRepositoryInMemory;
 let specificationsRepositoryInMemory: SpecificationsRepositoryInMemory
 
 describe("Create car Specification", () => {
-
     beforeEach(() => {
         carsRepositoryInMemory = new CarsRepositoryInMemory();
         specificationsRepositoryInMemory = new SpecificationsRepositoryInMemory();
@@ -44,7 +43,7 @@ describe("Create car Specification", () => {
 
         const specificationsCars = await createCarSpecificationUseCase.execute({ car_id: car.id, specifications_id });
 
-        expect(specificationsCars).toHaveProperty("specifications")
+        expect(specificationsCars).toHaveProperty("specifications");
         expect(specificationsCars.specifications.length).toBe(1);
     });
 })

@@ -8,10 +8,8 @@ import { AppError } from "@shared/errors/AppError";
 import { IDateProvider } from "@shared/container/providers/DateProvider/IDateProvider";
 import { IMailProvider } from "@shared/container/providers/MailProvider/IMailProvider";
 
-
 @injectable()
 class SendForgotPasswordMailUseCase {
-
     constructor(
         @inject("UsersRepository")
         private usersRepository: IUsersRepository,
@@ -24,17 +22,17 @@ class SendForgotPasswordMailUseCase {
 
         @inject("MailProvider")
         private mailProvider: IMailProvider,
-    ) {}
+    ) { }
 
     async execute(email: string): Promise<void> {
         const user = await this.usersRepository.findByEmail(email);
 
         const templatePath = resolve(__dirname, "..", "..", "views", "emails", "forgotPassword.hbs");
 
-        if(!user) {
+        if (!user) {
             throw new AppError("User doesnt exists!");
         }
-        
+
         const token = uuidV4();
 
         const expires_date = this.dateProvider.addHours(3);
@@ -51,10 +49,10 @@ class SendForgotPasswordMailUseCase {
         }
 
         await this.mailProvider.sendMail(
-            email, 
+            email,
             "Recuperação de senha",
             variables,
-            templatePath 
+            templatePath
         );
     }
 }

@@ -8,7 +8,6 @@ interface IFiles {
 }
 
 class UploadCarImagesController {
-
     async handle(request: Request, response: Response): Promise<Response> {
         const { id } = request.params;
         const images = request.files as IFiles[];

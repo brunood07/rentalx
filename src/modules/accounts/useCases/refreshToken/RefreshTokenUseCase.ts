@@ -18,23 +18,22 @@ interface ITokenResponse {
 
 @injectable()
 class RefreshTokenUseCase {
-
     constructor(
         @inject("UsersTokensRepository")
         private usersTokensRepository: IUsersTokensRepository,
 
         @inject("DayjsDateProvider")
         private dateProvider: IDateProvider
-    ) {}
+    ) { }
 
     async execute(token: string): Promise<ITokenResponse> {
         const { email, sub } = verify(token, auth.secret_refresh_token) as IPayload;
-        
+
         const user_id = sub;
 
         const userToken = await this.usersTokensRepository.findByUserIdAndRefreshToken(user_id, token);
 
-        if(!userToken) {
+        if (!userToken) {
             throw new AppError("Refresh token doesnt exists!");
         }
 
@@ -66,7 +65,3 @@ class RefreshTokenUseCase {
 }
 
 export { RefreshTokenUseCase };
-
-function Injectable() {
-    throw new Error("Function not implemented.");
-}

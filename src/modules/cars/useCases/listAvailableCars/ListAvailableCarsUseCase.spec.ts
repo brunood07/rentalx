@@ -6,14 +6,12 @@ let listAvailableCarsUseCase: ListAvailableCarsUseCase;
 let carsRepositoryInMemory: CarsRepositoryInMemory;
 
 describe("List cars", () => {
-
     beforeEach(() => {
         carsRepositoryInMemory = new CarsRepositoryInMemory();
         listAvailableCarsUseCase = new ListAvailableCarsUseCase(carsRepositoryInMemory);
     });
 
     it("Should be able to list all available cars.", async () => {
-
         const car = await carsRepositoryInMemory.create({
             "name": "Car1",
             "description": "Car description",
@@ -25,7 +23,7 @@ describe("List cars", () => {
         });
 
         const cars = await listAvailableCarsUseCase.execute({});
-        
+
         expect(cars).toEqual([car]);
     });
 

@@ -17,7 +17,7 @@ class Category {
 
     // Utiliza a constructor para tirar a responsabilidade da Rota de criar o uuid
     constructor() {
-        if(!this.id) {
+        if (!this.id) {
             this.id = uuidv4();
         }
     }

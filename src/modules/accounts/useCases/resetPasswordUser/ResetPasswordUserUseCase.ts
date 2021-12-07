@@ -12,26 +12,25 @@ interface IRequest {
 
 @injectable()
 class ResetPasswordUserUseCase {
-
     constructor(
         @inject("UsersTokensRepository")
         private usersTokensRepository: IUsersTokensRepository,
 
         @inject("DayjsDateProvider")
         private dateProvider: IDateProvider,
-        
+
         @inject("UsersRepository")
         private usersRepository: IUsersRepository
-      ) {}
+    ) { }
 
     async execute({ token, password }: IRequest): Promise<void> {
         const userToken = await this.usersTokensRepository.findByRefreshToken(token);
 
-        if(!userToken) {
+        if (!userToken) {
             throw new AppError("Token invalid!");
         }
 
-        if(this.dateProvider.compareIfBefore(userToken.expires_date, this.dateProvider.dateNow())
+        if (this.dateProvider.compareIfBefore(userToken.expires_date, this.dateProvider.dateNow())
         ) {
             throw new AppError("Token expired!");
         }

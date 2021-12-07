@@ -5,7 +5,6 @@ import { IUsersTokensRepository } from "@modules/accounts/repositories/IUsersTok
 import { UserTokens } from "../entities/UserTokens";
 
 class UsersTokensRepository implements IUsersTokensRepository {
-
     private repository: Repository<UserTokens>;
 
     constructor() {

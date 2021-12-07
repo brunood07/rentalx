@@ -37,13 +37,13 @@ container.registerSingleton<IUsersRepository>(
 
 // ICarsRepository
 container.registerSingleton<ICarsRepository>(
-    "CarsRepository", 
+    "CarsRepository",
     CarsRepository
 );
 
 // ICarsImagesRepository
 container.registerSingleton<ICarsImagesRepository>(
-    "CarsImagesRepository", 
+    "CarsImagesRepository",
     CarsImagesRepository
 );
 

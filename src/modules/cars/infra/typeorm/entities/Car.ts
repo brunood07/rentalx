@@ -33,28 +33,28 @@ class Car {
     @ManyToOne(() => Category)
     @JoinColumn({ name: "category_id" })
     category: Category;
-    
+
     @Column()
     category_id: string;
 
     @ManyToMany(() => Specification)
     @JoinTable({
         name: "specifications_cars",
-        joinColumns: [{name: "car_id"}],
+        joinColumns: [{ name: "car_id" }],
         inverseJoinColumns: [{ name: "specification_id" }],
     })
     specifications: Specification[]
-    
+
     @CreateDateColumn()
     created_at: Date;
-    
+
     constructor() {
         if (!this.id) {
             this.id = uuidV4();
             this.available = true;
         }
     }
-    
+
 }
 
 export { Car };
